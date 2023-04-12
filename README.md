@@ -27,7 +27,7 @@ WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 
 ## Screenshot
-![weather dashboard screenshot](./assets/images/Weather-Dashboard.png);
+![weather dashboard screenshot](./assets/images/Screenshot%20(293).png);
 
 ## Links 
 Github- https://github.com/Dhruv-232/Weather-Dashboard

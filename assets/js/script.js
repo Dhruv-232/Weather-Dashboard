@@ -7,7 +7,7 @@ const cityInput = document.getElementById('city-input');
 const weatherInfo = document.getElementById('weather-info');
 const searchHistory = document.getElementById('search-history');
 
-// event listener for search form submission
+// event listener for the submit button
 searchForm.addEventListener('submit', function (e) {
     e.preventDefault();
     const city = cityInput.value.trim();
@@ -17,22 +17,20 @@ searchForm.addEventListener('submit', function (e) {
       li.classList.add('list-group-item');
       li.textContent = city;
       searchHistory.prepend(li);
-      // get current weather and 5-day forecast for the city
+      // gets the current weather and the 5-day forecast for the city
       getWeather(city);
-      // clear input field
       cityInput.value = '';
     }
   });
 
   function getWeather(city) {
-    // construct API URLs for current weather and 5-day forecast
     const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
     const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
-    // get current weather data
+    // This will get the current weather data
     fetch(currentWeatherUrl)
       .then((response) => response.json())
       .then((data) => {
-        // display current weather
+        // displays the current weather
         const currentWeather = `
           <h2 class="card-title text-center">${data.name}</h2>
           <p class="text-center">${data.weather[0].description}</p>
@@ -41,7 +39,7 @@ searchForm.addEventListener('submit', function (e) {
           <p class="text-center">Humidity: ${data.main.humidity}%</p>
         `;
         weatherInfo.innerHTML = currentWeather;
-        // get 5-day forecast data
+        // gets the 5-day forecast data
         return fetch(forecastUrl);
       })
       .then((response) => response.json())
